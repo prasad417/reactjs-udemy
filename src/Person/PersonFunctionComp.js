@@ -21,7 +21,7 @@ const PersonFunctionComp = () => {
     }
 
     return(
-        <div className="person-class-component">
+        <div className="person-funtion-component">
             <Person name = {personState.person[0].name} age = {personState.person[0].age}>My Hobbies: Long drive</Person>
             <Person name = {personState.person[1].name} age = {personState.person[1].age} />
             <Person name = {personState.person[2].name} age = {personState.person[2].age} />
