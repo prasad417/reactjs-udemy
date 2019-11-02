@@ -6,14 +6,13 @@ import UserInput from './assignments/state/UserInput'
 
 class App extends Component {
   
-  
-
   render() {
     return (
       <div className="App">
         {/* <PersonClass />
-        <PersonFunction /> */}
-        <UserInput />
+        <PersonFunction /> 
+        <UserInput /> */}
+        
       </div>
     );
   }
