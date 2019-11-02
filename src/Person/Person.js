@@ -12,4 +12,13 @@ class Person extends Component {
     }
 }
 
+// const Person = (props) => {
+//     return (
+//         <div>
+//             <p>I'm {this.props.name} and I'm {this.props.age} years old.</p>
+//             <p>{this.props.children}</p>
+//         </div>
+//     )
+// }
+
 export default Person
