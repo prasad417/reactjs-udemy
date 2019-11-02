@@ -1,35 +1,54 @@
-import React, { Component } from 'react'
-import Person from './Person'
+import React, { Component } from "react";
+import Person from "./Person";
 
 class PersonClassComp extends Component {
-    state = {
-        person: [
-            { name: "Prasad", age: "33" },
-            { name: "Ramya", age: "27" },
-            { name: "Prayan", age: "3" }
-        ]
-      }
-    
-      changeName = () => {
-        this.setState({
-          person: [
-            { name: "Prasad", age: "32" },
-            { name: "Ramya", age: "27" },
-            { name: "Prayan", age: "2" }
-        ]
-        })
-      }
+  state = {
+    persons: [
+      { id: "thffr45gfhhy", name: "Prasad", age: "33" },
+      { id: "hgdrfswa54df", name: "Ramya", age: "27" },
+      { id: "f6f9u8h54ssj", name: "Prayan", age: "3" }
+    ],
+    showPersons: false
+  };
 
-    render() {
-        return (
-            <div className="person-class-component">
-                <Person name = {this.state.person[0].name} age = {this.state.person[0].age}>My Hobbies: Long drive</Person>
-                <Person name = {this.state.person[1].name} age = {this.state.person[1].age} />
-                <Person name = {this.state.person[2].name} age = {this.state.person[2].age} />
-                <button onClick={this.changeName}>Class Switch Names</button>
-            </div>
-        )
+  changeName = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id
+    });
+    const person = { ...this.state.persons[personIndex] }
+    person.name = event.target.value
+    const persons = [...this.state.persons]
+    persons[personIndex] = person
+    this.setState({persons: persons})
+  };
+
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons
+    this.setState({showPersons: !doesShow})
+  };
+
+
+
+  render() {
+    let persons =null;
+    if(this.state.showPersons) {
+      persons = (
+        <div className="person-class-component">
+          {
+            this.state.persons.map(
+              (person, index) => {return <Person key = {person.id} changed = {(event) => this.changeName(event, person.id)} name = {person.name} age = {person.age}/>}
+            )
+          }
+        </div>
+      );
     }
+    return (
+      <div>
+        <button onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {persons}
+      </div>
+    );
+  }
 }
 
-export default PersonClassComp
+export default PersonClassComp;
